@@ -3,7 +3,7 @@ import getpass
 
 def get_info():
     dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    with open(os.path.join(dir, "default.txt"), 'r') as f:
+    with open(os.path.join(dir, "default.txt"), 'r', encoding="utf-8") as f:
         lines = f.readlines()
         info = {}
         for i in range(len(lines)):
