@@ -1,21 +1,46 @@
 # Booking NTU Badminton Courts with Python Selenium
 
-This code only supports for **Mac** users and run with **Python**.
+Original author: **Yu-Tai, Lin**
 
-### Installation
-1. If you don't have the python package `selenium`, install with
-   ```
-   python -m pip install selenium
-   ```
-2. Click the file `install.sh` and run with terminal.
+---
 
-### Run Code
-Just run the `main.py` with **Python**.
-```
-python main.py
-```
+### Prerequisites
+
+1. [Python3](https://www.python.org)
+2. Python package [selenium](https://selenium-python.readthedocs.io), can be installed with
+   ```bash
+   pip install selenium
+   ```
+3. [Chrome browser](https://www.google.com/chrome/)
+4. [Homebrew](https://brew.sh). (Optional, for Mac users only.)
+
+### Installations
+
+For **Mac** users, you have two options, either install with `brew` or general method above.
+
+- For **general**(non-Mac) users:
+  1. Check your Chrome version. (see: [How to find which version of Google Chrome](https://www.businessinsider.com/what-version-of-google-chrome-do-i-have) or `chrome://settings/help`)
+  2. Download [ChromeDriver](https://chromedriver.chromium.org/downloads) corresponds to your Chrome version.
+
+- For **brew** users:
+   1. Click the file `install.sh` and run with terminal.
+   2. If it requires you to open ChromeDriver, just open it.
+
+### Run Codes
+
+1. Change the default values in `default.txt`
+   **Warning**: You are NOT allowed to change the  order between lines or titles or delete them in `default.txt`
+
+2. Just run with Python. 
+   ```bash
+   python main.py
+   ```
 
 ### Notes For The Users
-- You can modify the default value (e.g. account ID, time,.etc) in the `main.py`
-- If you find your **chromedriver** need to be update, just run `install.sh` again.
+
 - You still need to fill in the verification image code by yourself at the last step.
+- ChromeDriver will refresh until you are able to book the court.
+
+### Acknowledgements
+
+We thanks to the original author **Yu-Tai, Lin** for sharing his code to us.
