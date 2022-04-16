@@ -11,6 +11,11 @@ Original author: **Yu-Tai, Lin**
    ```bash
    pip install selenium
    ```
+   Need to be the latest version of `pip` and `selenium`, to upgrade, try
+   ```bash
+   pip install --upgrade pip
+   pip install --upgrade selenium
+   ```
 3. [Chrome browser](https://www.google.com/chrome/)
 4. [Homebrew](https://brew.sh). (Optional, for Mac users only.)
 

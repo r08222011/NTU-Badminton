@@ -4,6 +4,7 @@ import subprocess
 import selenium
 import tools.ntuinfo as ntuinfo
 import tools.ntudriver as ntudriver
+from selenium.webdriver.chrome.service import Service
 
 # check chromedriver path
 try:
@@ -19,7 +20,7 @@ finally:
     print(f"ChromeDriver successfully found : {chromedriver_path}")
 
 info = ntuinfo.get_info()
-driver = selenium.webdriver.Chrome(chromedriver_path)
+driver = selenium.webdriver.Chrome(service=Service(chromedriver_path))
 driver.get("https://ntupesc.ntu.edu.tw/facilities/PlaceGrd.aspx") # 新體預約首頁
 
 ntudriver.booking(driver, info)
