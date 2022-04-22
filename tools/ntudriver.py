@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 
-def booking(driver, info):
+def booking(driver, info, alumni=False):
     print("Start booking with ChromeDriver ... ")
     account  = info['account']
     password = info['password']
@@ -20,10 +20,16 @@ def booking(driver, info):
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
     driver.find_element_by_xpath("//*[@id=\"left\"]/ul[1]/li[4]/p/a[1]").click() # 按會員登入
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
-    driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_tpValidator_HypLinkStu\"]/p").click() # 按學生登入
-    driver.find_element_by_xpath("//*[@id=\"myTable\"]/td/input").send_keys(account)   # 輸入帳號
-    driver.find_element_by_xpath("//*[@id=\"myTable2\"]/td/input").send_keys(password) # 輸入密碼
-    driver.find_element_by_xpath("//*[@id=\"content\"]/form/table/tbody/tr[3]/td[2]/input").click() # 按登入
+    if not alumni:
+        driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_tpValidator_HypLinkStu\"]/p").click() # 按學生登入
+        driver.find_element_by_xpath("//*[@id=\"myTable\"]/td/input").send_keys(account)   # 輸入帳號
+        driver.find_element_by_xpath("//*[@id=\"myTable2\"]/td/input").send_keys(password) # 輸入密碼
+        driver.find_element_by_xpath("//*[@id=\"content\"]/form/table/tbody/tr[3]/td[2]/input").click() # 按登入
+    else:
+        driver.find_element_by_xpath("//*[@id=\"__tab_ctl00_ContentPlaceHolder1_tcTab_TabPanel3\"]/font").click() # 按校友
+        driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_TabPanel3_txtMemberID\"]").send_keys(account)   # 輸入帳號
+        driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_TabPanel3_txtPassword\"]").send_keys(password) # 輸入密碼
+        driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_TabPanel3_btnLogin\"]").click() # 按登入
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
 
     # choose floor

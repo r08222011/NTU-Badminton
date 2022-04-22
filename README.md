@@ -36,10 +36,15 @@ For **Mac** users, you have two options, either install with `brew` or general m
 1. Change the default values in `default.txt`
    **Warning**: You are NOT allowed to change the  order between lines or titles or delete them in `default.txt`
 
-2. Just run with Python. 
-   ```bash
-   python main.py
-   ```
+2. Just run with Python.
+   - If you are a NTU student, run `main_student.py` 
+      ```bash
+      python main_student.py
+      ```
+   - If you are a NTU alumni, run `main_alumni.py` 
+      ```bash
+      python main_alumni.py
+      ```
 
 ### Notes For The Users
 

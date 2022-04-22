@@ -23,7 +23,7 @@ info = ntuinfo.get_info()
 driver = selenium.webdriver.Chrome(service=Service(chromedriver_path))
 driver.get("https://ntupesc.ntu.edu.tw/facilities/PlaceGrd.aspx") # 新體預約首頁
 
-ntudriver.booking(driver, info)
+ntudriver.booking(driver, info, alumni=True)
 while True:
     quit = input("Enter q to quit : ")
     if quit == 'q':
