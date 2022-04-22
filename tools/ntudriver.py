@@ -25,12 +25,13 @@ def booking(driver, info, alumni=False):
         driver.find_element_by_xpath("//*[@id=\"myTable\"]/td/input").send_keys(account)   # 輸入帳號
         driver.find_element_by_xpath("//*[@id=\"myTable2\"]/td/input").send_keys(password) # 輸入密碼
         driver.find_element_by_xpath("//*[@id=\"content\"]/form/table/tbody/tr[3]/td[2]/input").click() # 按登入
-        driver.get("https://ntupesc.ntu.edu.tw/facilities/PlaceGrd.aspx") # 新體預約首頁
     else:
         driver.find_element_by_xpath("//*[@id=\"__tab_ctl00_ContentPlaceHolder1_tcTab_TabPanel3\"]/font").click() # 按校友
         driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_TabPanel3_txtMemberID\"]").send_keys(account)   # 輸入帳號
         driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_TabPanel3_txtPassword\"]").send_keys(password) # 輸入密碼
         driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_TabPanel3_btnLogin\"]").click() # 按登入
+        driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
+        driver.get("https://ntupesc.ntu.edu.tw/facilities/PlaceGrd.aspx") # 新體預約首頁
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
 
     # choose floor
@@ -39,7 +40,10 @@ def booking(driver, info, alumni=False):
         select.select_by_index(0)
     elif floor == 1:
         select.select_by_index(1)
-    driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_tpValidator_Button1\"]").click() # 按搜尋
+    if not alumni:
+        driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_tpValidator_Button1\"]").click() # 按搜尋
+    else:
+        driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_tpValidator_ImageButton1\"]").click() # 按搜尋
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
     driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_lblNextWeek\"]/a").click() # 按下週行程
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
