@@ -25,6 +25,7 @@ def booking(driver, info, alumni=False):
         driver.find_element_by_xpath("//*[@id=\"myTable\"]/td/input").send_keys(account)   # 輸入帳號
         driver.find_element_by_xpath("//*[@id=\"myTable2\"]/td/input").send_keys(password) # 輸入密碼
         driver.find_element_by_xpath("//*[@id=\"content\"]/form/table/tbody/tr[3]/td[2]/input").click() # 按登入
+        driver.get("https://ntupesc.ntu.edu.tw/facilities/PlaceGrd.aspx") # 新體預約首頁
     else:
         driver.find_element_by_xpath("//*[@id=\"__tab_ctl00_ContentPlaceHolder1_tcTab_TabPanel3\"]/font").click() # 按校友
         driver.find_element_by_xpath("//*[@id=\"ctl00_ContentPlaceHolder1_tcTab_TabPanel3_txtMemberID\"]").send_keys(account)   # 輸入帳號
