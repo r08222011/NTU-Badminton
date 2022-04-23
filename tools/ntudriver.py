@@ -63,9 +63,15 @@ def booking(driver, info, alumni=False):
 
     # fill in the booking information
     select = Select(driver.find_element_by_xpath("/html/body/form/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/div/table[2]/tbody/tr[13]/td[2]/select[1]")) # 開始時間
-    select.select_by_index(start_t-8)
+    if day == 6 or day == 7:
+        select.select_by_index(start_t-9)
+    else:
+        select.select_by_index(start_t-8)
     select = Select(driver.find_element_by_xpath("/html/body/form/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/div/table[2]/tbody/tr[13]/td[2]/select[2]")) # 結束時間
-    select.select_by_index(end_t-9)
+    if day == 6 or day == 7:
+        select.select_by_index(end_t-10)
+    else:
+        select.select_by_index(end_t-9)
     driver.find_element_by_xpath("/html/body/form/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/div/table[2]/tbody/tr[14]/td[2]/input").clear() # 清除預設
     driver.find_element_by_xpath("/html/body/form/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/div/table[2]/tbody/tr[14]/td[2]/input").send_keys(court) # 場地數量
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
