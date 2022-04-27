@@ -37,6 +37,8 @@ def calculate_price_table(num_court, max_student, max_alumni):
                 final_price_per_alumni = 0
             else:
                 final_price_per_alumni  = final_price_per_student + (court_price - court_price_student * num_court) / num_alumni
+                if num_student == 0:
+                    final_price_per_student = 0
             price_table[num_student][num_alumni] = (int(round(final_price_per_student,-1)) , int(round(final_price_per_alumni,-1)))
     return price_table
 
