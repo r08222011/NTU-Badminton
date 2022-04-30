@@ -1,6 +1,7 @@
 import time
 import selenium
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 
@@ -49,8 +50,15 @@ def booking(driver, info, alumni=False):
     driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
 
     # refresh until able to book
-    row, col = str(start_t-6), str(day+1)
+    day_dict = {1:"一", 2:"二", 3:"三", 4:"四", 5:"五", 6:"六", 7:"日"}
+    for i in range(7):
+        check_day = driver.find_element(by=By.XPATH, value=f"//*[@id=\"ctl00_ContentPlaceHolder1_tab1\"]/tbody/tr[1]/td[{i+2}]").text
+        if day_dict[day] in check_day:
+            row, col = str(start_t-6), str(i+2)
     target_xpath = f"/html/body/form/table/tbody/tr[3]/td/div/table/tbody/tr/td[2]/div/div[2]/table/tbody/tr[2]/td/table[2]/tbody/tr[{row}]/td[{col}]/img"
+    print("Now Ready For Selecting", \
+        driver.find_element(by=By.XPATH, value=f"//*[@id=\"ctl00_ContentPlaceHolder1_tab1\"]/tbody/tr[1]/td[{col}]").text, \
+        driver.find_element(by=By.XPATH, value=f"//*[@id=\"ctl00_ContentPlaceHolder1_tab1\"]/tbody/tr[{row}]/td[1]").text)
     while True:
         try:
             driver.find_element_by_xpath("/html/body/div/div[1]/button/span[1]").click() # 按公告叉叉
