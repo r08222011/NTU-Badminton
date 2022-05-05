@@ -3,10 +3,10 @@
 - 請使用半形冒號，勿用全形冒號
 - 請勿加有的沒的字元
 
-帳號[account]: f08222011
-密碼[password]: Mapleian5112
+帳號[account]: xxx
+密碼[password]: xxx
 樓層(1或3)[floor]: 1
 禮拜幾(1~7)[day]: 6
-開始時間(24小時制)[start_t]:18 
-結束時間(24小時制)[end_t]: 20
+開始時間(24小時制)[start_t]: 16
+結束時間(24小時制)[end_t]: 18
 場地數量[court]: 2
