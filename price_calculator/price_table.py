@@ -4,9 +4,10 @@ import math
 court_price_student = 190
 court_price_alumni  = 450
 
+padding_tip    = 5   # for rounding at the last step
 bucket_price   = 250 # total price of a bucket of shuttlecocks
 shuttle_number = 12  # number of shuttlecocks per bucket
-shuttle_used   = 1.5 # average number of shuttlecocks used per court per hour
+shuttle_used   = 2 # average number of shuttlecocks used per court per hour
 shuttle_price  = shuttle_used * (bucket_price/shuttle_number)
 
 def calculate_price_table(num_court, max_student, max_alumni):
@@ -32,7 +33,8 @@ def calculate_price_table(num_court, max_student, max_alumni):
                     mix_court_price = ((num_alumni%4)*court_price_alumni + min(4-num_alumni%4,num_student)*court_price_student) / ((num_alumni%4)+min(4-num_alumni%4,num_student))
                     court_price = full_alumni_court_price + mix_court_price + max(0,(num_court - 1 - (num_alumni//4))) * court_price_student
             
-            final_price_per_student = (court_price_student * num_court + shuttle_price * num_court) / (num_student + num_alumni)
+            final_price_per_student  = (court_price_student * num_court + shuttle_price * num_court) / (num_student + num_alumni)
+            final_price_per_student += padding_tip
             if num_alumni == 0:
                 final_price_per_alumni = 0
             else:
@@ -51,8 +53,8 @@ if __name__ == '__main__':
     with open(os.path.join(dir_path, "price_table.csv"), "w") as csvfile:
         csvwriter = csv.writer(csvfile)
 
-        csvwriter.writerow(["court_s",190])
-        csvwriter.writerow(["court_a",450])
+        csvwriter.writerow(["court_s",court_price_student])
+        csvwriter.writerow(["court_a",court_price_alumni])
         csvwriter.writerow(["shuttle",int(round(shuttle_price,-1))])
 
         csvwriter.writerow([])
